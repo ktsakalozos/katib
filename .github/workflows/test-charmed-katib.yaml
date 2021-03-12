@@ -23,9 +23,10 @@ jobs:
           set -eux
           sudo snap install microk8s --classic --channel=1.19/stable;
           sudo microk8s.status --wait-ready;
-          sudo microk8s.kubectl -n kube-system rollout status ds/calico-node
+          # sudo microk8s.kubectl -n kube-system rollout status ds/calico-node
 
-          sudo microk8s enable dns
+          sudo microk8s enable dns || true
+          sudo journalctl --since "1 hour ago" -u snap.microk8s.daemon-apiserver-kicker
           sudo snap install charm --classic
           sudo snap install juju --classic
           sudo snap install juju-helpers --classic
