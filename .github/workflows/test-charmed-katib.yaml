@@ -16,11 +16,12 @@ jobs:
       - uses: balchua/microk8s-actions@v0.2.2
         with:
           channel: "1.19/stable"
-          addons: '["dns", "storage", "rbac"]'
+          #addons: '["dns", "storage", "rbac"]'
 
       - name: Install dependencies
         run: |
           set -eux
+          microk8s enable dns
           sudo snap install charm --classic
           sudo snap install juju --classic
           sudo snap install juju-helpers --classic
