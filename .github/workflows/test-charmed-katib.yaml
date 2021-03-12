@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           set -eux
-          microk8s enable dns
+          sudo microk8s enable dns
           sudo snap install charm --classic
           sudo snap install juju --classic
           sudo snap install juju-helpers --classic
